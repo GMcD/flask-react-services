@@ -4,4 +4,8 @@
     <h2>{% block title %} {{ post['title'] }} {% endblock %}</h2>
     <span class="badge badge-primary">{{ post['created'] }}</span>
     <p>{{ post['content'] }}</p>
+    <a href="{{url_for('index')}}">
+        <span class="badge badge-info">Back</span>
+    </a>
+
 {% endblock %}
