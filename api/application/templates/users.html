@@ -12,18 +12,27 @@
               <span class="field-name">Email:</span>
               <span class="field-value">{{ user.email }}</span>
           </li>
+          {% if user.avatar %}
+          <li>
+            <img width="128" src="{{ user.avatar }}" alt="Google Profile Avatar"></img>
+          </li>
+          {% endif %}
           <li>
               <span class="field-name">Created:</span>
               <span class="field-value">{{ user.created }}</span>
           </li>
+          {% if user.bio %}
           <li>
               <span class="field-name">Bio:</span>
               <span class="field-value">{{ user.bio }}</span>
           </li>
+          {% endif %}
+          {% if user.admin %}
           <li>
               <span class="field-name">Admin:</span>
               <span class="field-value">{{ user.admin }}</span>
           </li>
+          {% endif %}
         </ul>
       {% endfor %}
 {% endblock %}

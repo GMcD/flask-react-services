@@ -11,8 +11,14 @@ class Config:
     SESSION_COOKIE_NAME = environ.get('SESSION_COOKIE_NAME', 'COOKIE-NAME')
 
     # Database
-    SQLALCHEMY_DATABASE_URI = environ.get("SQLALCHEMY_DATABASE_URI")
+    SQLALCHEMY_DATABASE_URI = environ.get('SQLALCHEMY_DATABASE_URI', 'NO-DATABASE')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    # Google
+    # Configuration
+    GOOGLE_CLIENT_ID = environ.get("GOOGLE_CLIENT_ID", None)
+    GOOGLE_CLIENT_SECRET = environ.get("GOOGLE_CLIENT_SECRET", None)
+    GOOGLE_DISCOVERY_URL = "https://accounts.google.com/.well-known/openid-configuration"
 
 class ProdConfig(Config):
     FLASK_ENV = 'production'

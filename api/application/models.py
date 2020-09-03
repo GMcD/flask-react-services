@@ -11,6 +11,12 @@ class User(UserMixin, db.Model):
         db.Integer,
         primary_key=True
     )
+    google = db.Column(
+        db.String(64),
+        index=False,
+        unique=True,
+        nullable=True
+    )
     username = db.Column(
         db.String(64),
         index=False,
@@ -35,6 +41,12 @@ class User(UserMixin, db.Model):
         unique=False,
         nullable=True
     )
+    avatar = db.Column(
+        db.Text,
+        index=False,
+        unique=False,
+        nullable=True
+    )
     admin = db.Column(
         db.Boolean,
         index=False,
@@ -45,7 +57,7 @@ class User(UserMixin, db.Model):
         db.String(128),
         index=False,
         unique=True,
-        nullable=False
+        nullable=True
     )
 
     def __repr__(self):
