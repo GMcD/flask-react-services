@@ -8,7 +8,7 @@ posts_schema = PostSchema(many=True)
 
 @app.route('/time')
 def get_current_time():
-    return {'time': time.time()}
+    return {'time': int(time.time())}
 
 @app.route("/posts")
 def posts():
