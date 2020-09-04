@@ -28,10 +28,13 @@ function deck(cards){
 }
 
 const palette = ['#F8B195', '#F67280', '#C06C84', '#6C5B7B', '#355C7D']
+function createMarkup(content) {
+  return {__html: content};
+}
 function card(props, idx){
     return ( <Card key={props.id} background={palette[idx]}>
       <h1>{props.title}</h1>
-      <p>{props.content}</p>
+      <div dangerouslySetInnerHTML={ createMarkup(props.content) }></div>
     </Card> )
 }
 
