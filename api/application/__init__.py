@@ -38,7 +38,7 @@ def create_app():
         # Register Blueprints
 
         # Include our Routes
-        from . import routes, errors
+        from . import routes
         db.create_all()
 
         return app
