@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="alert alert-danger" role="alert">The requested resource was not found...</div>
+    <div class="alert alert-info" role="alert">Sorry, this is a young app, and will grow up, and behave better!</div>
+    <p><a href="{{ url_for('index') }}">Back</a></p>
+{% endblock %}

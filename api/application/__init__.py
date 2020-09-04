@@ -23,6 +23,9 @@ def create_app():
     app = Flask(__name__, instance_relative_config=False)
     app.config.from_object('api.config.DevConfig')
 
+    from .errors import bp as errors_bp
+    app.register_blueprint(errors_bp)
+
     # Initialize Plugins
     db.init_app(app)
     migrate.init_app(app, db)
@@ -32,12 +35,10 @@ def create_app():
     login.login_view = 'login'
 
     with app.app_context():
-        # Include our Routes
-        from . import routes
-        db.create_all()
-
         # Register Blueprints
-        # app.register_blueprint(auth.auth_bp)
-        # app.register_blueprint(admin.admin_bp)
+
+        # Include our Routes
+        from . import routes, errors
+        db.create_all()
 
         return app
