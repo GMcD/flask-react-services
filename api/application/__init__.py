@@ -5,7 +5,6 @@ from flask_migrate import Migrate
 from flask_marshmallow import Marshmallow
 from flask_login import LoginManager
 from flask_redis import FlaskRedis
-from oauthlib.oauth2 import WebApplicationClient
 
 # Globally accessible libraries
 db = SQLAlchemy()
@@ -14,10 +13,6 @@ ma = Marshmallow()
 r = FlaskRedis()
 login = LoginManager()
 
-# OAuth 2 client setup
-GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
-google_client = WebApplicationClient(GOOGLE_CLIENT_ID)
-
 def create_app():
     """Initialize the core application."""
     app = Flask(__name__, instance_relative_config=False)
@@ -25,6 +20,8 @@ def create_app():
 
     from .errors import bp as errors_bp
     app.register_blueprint(errors_bp)
+    from .auth import bp as auth_bp
+    app.register_blueprint(auth_bp)
 
     # Initialize Plugins
     db.init_app(app)

@@ -6,10 +6,11 @@ from flask import request, render_template, make_response, redirect, url_for, fl
 from flask import current_app as app
 from flask_login import current_user, login_user, logout_user, login_required
 
-from ..models import db, User
+from api.application.models import db, User
+from .. import bp
 from ..forms import LoginForm, RegistrationForm
 
-@app.route('/login', methods=['GET', 'POST'])
+@bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -18,7 +19,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
-            return redirect(url_for('login'))
+            return redirect(url_for('auth.login'))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -26,12 +27,12 @@ def login():
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
-@app.route('/logout')
+@bp.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('login'))
+    return redirect(url_for('auth.login'))
 
-@app.route('/register', methods=['GET', 'POST'])
+@bp.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -42,10 +43,10 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
     return render_template('register.html', title='Register', form=form)
 
-@app.route('/users/', methods=['GET'])
+@bp.route('/users/', methods=['GET'])
 @login_required
 def user_records():
     """Create a user via query string parameters."""
@@ -66,7 +67,7 @@ def user_records():
         )  # Create an instance of the User class
         db.session.add(new_user)  # Adds new User record to database
         db.session.commit()  # Commits all changes
-        redirect(url_for('user_records'))
+        redirect(url_for('auth.user_records'))
     return render_template(
         'users.html',
         users=User.query.all(),

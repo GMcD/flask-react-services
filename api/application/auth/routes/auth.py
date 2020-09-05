@@ -6,8 +6,9 @@ from flask import request, redirect, url_for
 from flask import current_app as app
 from flask_login import current_user, login_user
 
-from .. import google_client
-from ..models import db, User
+from api.application.models import db, User
+
+from .. import google_client, bp
 
 SCOPE = ["openid",
             "https://www.googleapis.com/auth/userinfo.email",
@@ -17,7 +18,7 @@ def get_google_provider_cfg():
     gdu = app.config['GOOGLE_DISCOVERY_URL']
     return requests.get(gdu).json()
 
-@app.route("/auth/")
+@bp.route("/auth/")
 def google_index():
     if current_user.is_authenticated:
         return (
@@ -31,7 +32,7 @@ def google_index():
     else:
         return '<a class="button" href="/auth/login">Google Login</a>'
 
-@app.route("/auth/login")
+@bp.route("/auth/login")
 def google_login():
     # Find out what URL to hit for Google login
     google_provider_cfg = get_google_provider_cfg()
@@ -45,7 +46,7 @@ def google_login():
     )
     return redirect(request_uri)
 
-@app.route("/auth/login/callback")
+@bp.route("/auth/login/callback")
 def google_callback():
     # Get authorization code Google sent back to you
     code = request.args.get("code")
@@ -102,9 +103,3 @@ def google_callback():
 
     # Send user back to homepage
     return redirect(url_for("index"))
-
-# @app.route("/logout")
-# @login_required
-# def logout():
-#     logout_user()
-#     return redirect(url_for("index"))
