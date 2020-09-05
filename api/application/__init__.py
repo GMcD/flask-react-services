@@ -22,6 +22,8 @@ def create_app():
     app.register_blueprint(errors_bp)
     from .auth import bp as auth_bp
     app.register_blueprint(auth_bp)
+    from .api import bp as api_bp
+    app.register_blueprint(api_bp)
 
     # Initialize Plugins
     db.init_app(app)

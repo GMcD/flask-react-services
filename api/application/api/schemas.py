@@ -1,6 +1,6 @@
 
-from . import ma
-from .models import Post
+from .. import ma
+from ..models import Post
 
 class PostSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
