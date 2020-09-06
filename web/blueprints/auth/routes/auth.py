@@ -6,7 +6,7 @@ from flask import request, redirect, url_for
 from flask import current_app as app
 from flask_login import current_user, login_user
 
-from api.application.models import db, User
+from web.application.models import db, User
 
 from .. import google_client, bp
 

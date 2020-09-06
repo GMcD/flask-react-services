@@ -6,7 +6,7 @@ from flask import request, render_template, make_response, redirect, url_for, fl
 from flask import current_app as app
 from flask_login import current_user, login_user, logout_user, login_required
 
-from api.application.models import db, User
+from web.application.models import db, User
 from .. import bp
 from ..forms import LoginForm, RegistrationForm
 

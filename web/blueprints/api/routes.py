@@ -1,6 +1,9 @@
 import time
+from werkzeug.exceptions import abort
+
+from web.application.models import Post
+
 from . import bp
-from ..models import Post
 from .schemas import PostSchema
 
 post_schema = PostSchema()
@@ -18,4 +21,6 @@ def posts():
 @bp.route("/posts/<post_id>")
 def post_detail(post_id):
     post = Post.query.filter_by(id=post_id).first()
+    if not post:
+        abort(404)
     return post_schema.dump(post)

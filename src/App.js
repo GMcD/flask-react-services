@@ -67,6 +67,7 @@ function App() {
       {currentPosts.length > 2 ? card(currentPosts[2], 2) : <span/> }
       {currentPosts.length > 3 ? card(currentPosts[3], 3) : <span/> }
       {currentPosts.length > 4 ? card(currentPosts[4], 4) : <span/> }
+      {currentPosts.length > 5 ? card(currentPosts[5], 0) : <span/> }
       </CardStack>
       </header>
     </div>
