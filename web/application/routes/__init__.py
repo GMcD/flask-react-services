@@ -1,1 +1,4 @@
-from .blog import *  # index, post, create, edit, delete
+"""
+    Blog routes for Create, Retrieve, Update and Delete
+"""
+from .blog import *
