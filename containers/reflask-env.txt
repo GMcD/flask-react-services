@@ -2,8 +2,6 @@
 REGISTRY=registry2.local.projectscapa.com:5443
 TAG_NO=1
 
-REFLASK_SRC=/Users/work/Documents/Code/SalesSource/code/reflask/app
-
 API_PORT=7078
 BACK_END_PORT=7079
 FRONT_END_PORT=7080

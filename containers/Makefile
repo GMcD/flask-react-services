@@ -4,6 +4,9 @@
 
 include ./reflask-env.txt
 
+# For mounting Source
+REFLASK_SRC := $(PWD)/../app
+
 ##
 ## Usage:
 ##   make

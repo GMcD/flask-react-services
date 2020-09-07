@@ -2,7 +2,7 @@ ARG REGISTRY
 ARG TAG_NO
 FROM $REGISTRY/reflask/flask:$TAG_NO
 
-ENV FLASK_APP=web.service
+ENV FLASK_APP web.service
 
 COPY ./app/ /service/reflask
 

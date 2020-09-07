@@ -1,6 +1,3 @@
-#  ARG REGISTRY
-# FROM $REGISTRY/containers/alp-geo:latest
-
 FROM python:3.8.5-alpine3.12
 
 ENV FLASK_ENV development
