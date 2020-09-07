@@ -22,3 +22,11 @@ The architectural design has a number of principles which may seem unconventiona
  The rationale behind these principles is to maximise the efficiency of development, minimise
  technical debt, keep up to date with the rapidly evolving technological landscape, facilitate
  home working, reduce time to market, and fundamentally to deliver value and increase profitability.
+
+ Structure
+ ---------
+
+ Follow the links below for documentation of the structural components.
+
+   * [Requirements](./requirements/README.md)
+   
