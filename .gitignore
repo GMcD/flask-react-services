@@ -2,7 +2,7 @@
 
 *.db
 .DS_Store
-local.projectscapa.com.*
+*.key
 
 *.pyc
 

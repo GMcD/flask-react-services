@@ -2,7 +2,7 @@
 REGISTRY=registry2.local.projectscapa.com:5443
 TAG_NO=1
 
-REFLASK_SRC=/Users/work/Documents/Code/SalesSource/app
+REFLASK_SRC=/Users/work/Documents/Code/SalesSource/code/reflask/app
 
 API_PORT=7078
 BACK_END_PORT=7079
@@ -22,3 +22,5 @@ SECRET_KEY='MY KIND OF SECRET KEY'
 
 GOOGLE_CLIENT_ID='672576031209-tv4poa0q6q397aia6trcugcrrq7rbbs3.apps.googleusercontent.com'
 GOOGLE_CLIENT_SECRET='_d9GKch356V2zvoL49ARWDLX'
+
+DANGEROUSLY_DISABLE_HOST_CHECK=true

@@ -7,8 +7,9 @@ x-env: &env
 services:
 
   proxy-ssl:
-    image: ${REGISTRY}/cicd/proxy-ssl:85
+    image: ${REGISTRY}/reflask/proxy-ssl:${TAG_NO}
     hostname: proxy-ssl
+    container_name: proxy-ssl
     networks:
       - reflask
     ports:

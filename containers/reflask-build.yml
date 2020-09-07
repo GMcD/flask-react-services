@@ -6,6 +6,12 @@ x-env: &env
 
 services:
 
+  proxy-ssl:
+    image: ${REGISTRY}/reflask/proxy-ssl:${TAG_NO}
+    build:
+      context: ..
+      dockerfile: ./containers/proxy-ssl/Dockerfile
+
   postgres:
     image: ${REGISTRY}/reflask/postgres:${TAG_NO}
     build:
