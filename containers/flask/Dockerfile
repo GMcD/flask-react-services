@@ -3,7 +3,6 @@
 
 FROM python:3.8.5-alpine3.12
 
-ENV FLASK_APP api
 ENV FLASK_ENV development
 
 RUN apk add build-base openssl-dev libffi-dev postgresql-dev postgresql-client python3-dev
