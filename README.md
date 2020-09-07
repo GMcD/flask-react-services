@@ -1,7 +1,7 @@
 Flask React Services
 ====================
 
-The `reflask` repository contains a simple flask blog aplication, with an API service.
+The `reflask` repository contains a simple flask blog application, with an API service.
 The flask app provides for authoring posts, while React front end simply allows reading posts.
 
 Architecture

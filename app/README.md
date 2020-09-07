@@ -9,6 +9,7 @@ Web
 ---
 
 The code in `web` provides
+
     * `web.application` - Flask Blog App
     * `web.service` - Flask Post API
     * `blueprints.api` - Implementation of Post API for `web.service`
