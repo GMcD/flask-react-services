@@ -3,11 +3,13 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_debugtoolbar import DebugToolbarExtension
 
 # Globally accessible libraries
 db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()
+toolbar = DebugToolbarExtension()
 
 def create_app():
     """Initialize the core application."""
@@ -25,6 +27,7 @@ def create_app():
     migrate.init_app(app, db)
     login.init_app(app)
     login.login_view = 'login'
+    toolbar.init_app(app)
 
     with app.app_context():
         # Register Blueprints
