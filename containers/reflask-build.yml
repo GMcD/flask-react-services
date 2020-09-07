@@ -1,0 +1,52 @@
+version: '3.7'
+
+x-env: &env
+    env_file:
+        reflask-env.txt
+
+services:
+
+  postgres:
+    image: ${REGISTRY}/reflask/postgres:${TAG_NO}
+    build:
+      args:
+        REGISTRY: ${REGISTRY}
+        TAG_NO: ${TAG_NO}
+      context: ..
+      dockerfile: ./containers/postgres/Dockerfile
+
+  flask:
+    image: ${REGISTRY}/reflask/flask:${TAG_NO}
+    build:
+      args:
+        REGISTRY: ${REGISTRY}
+        TAG_NO: ${TAG_NO}
+      context: ..
+      dockerfile: ./containers/flask/Dockerfile
+
+  api:
+    image: ${REGISTRY}/reflask/api:${TAG_NO}
+    build:
+      args:
+        REGISTRY: ${REGISTRY}
+        TAG_NO: ${TAG_NO}
+      context: ..
+      dockerfile: ./containers/api/Dockerfile
+
+  web:
+    image: ${REGISTRY}/reflask/web:${TAG_NO}
+    build:
+      args:
+        REGISTRY: ${REGISTRY}
+        TAG_NO: ${TAG_NO}
+      context: ..
+      dockerfile: ./containers/web/Dockerfile
+
+  react:
+    image: ${REGISTRY}/reflask/react:${TAG_NO}
+    build:
+      args:
+        REGISTRY: ${REGISTRY}
+        TAG_NO: ${TAG_NO}
+      context: ..
+      dockerfile: ./containers/react/Dockerfile

@@ -17,7 +17,13 @@
                   class="form-control">{{ request.form['content'] }}</textarea>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
     </div>
+    <div>
+        <a href="{{url_for('index')}}">
+            <span class="btn btn-info btn-sm">Cancel</span>
+        </a>
+    </div>
+
 </form>
 {% endblock %}

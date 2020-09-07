@@ -18,15 +18,21 @@
                   class="form-control">{{ request.form['content'] or post['content'] }}</textarea>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
     </div>
 </form>
 
 <form action="{{ url_for('delete', post_id=post['id']) }}" method="POST">
-    <input type="submit" value="Delete Post"
+    <input type="submit" value="Delete"
             class="btn btn-danger btn-sm"
             onclick="return confirm('Are you sure you want to delete this post?')">
 </form>
+
+<div style="margin-top:10px">
+    <a href="{{url_for('index')}}">
+        <span class="btn btn-info btn-sm">Cancel</span>
+    </a>
+</div>
 
 <hr>
 {% endblock %}

@@ -70,6 +70,6 @@ def user_records():
         redirect(url_for('auth.user_records'))
     return render_template(
         'users.html',
-        users=User.query.all(),
-        title="Show Users"
+        users=User.query.filter(User.username == current_user.username).all(),
+        title="Your Profile"
     )

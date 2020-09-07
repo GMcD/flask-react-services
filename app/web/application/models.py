@@ -70,8 +70,8 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
 @login.user_loader
-def load_user(id):
-    return User.query.get(int(id))
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 class Post(db.Model):
     """Data model for blog posts."""

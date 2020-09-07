@@ -1,0 +1,24 @@
+
+REGISTRY=registry2.local.projectscapa.com:5443
+TAG_NO=1
+
+REFLASK_SRC=/Users/work/Documents/Code/SalesSource/app
+
+API_PORT=7078
+BACK_END_PORT=7079
+FRONT_END_PORT=7080
+
+FLASK_ENV=development
+
+POSTGRES_URL=postgres:5432
+POSTGRES_DB=reflask
+POSTGRES_USER=reflask
+POSTGRES_PASSWORD=secret
+
+SQLALCHEMY_ECHO=False
+SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://reflask:secret@postgres:5432/reflask'
+
+SECRET_KEY='MY KIND OF SECRET KEY'
+
+GOOGLE_CLIENT_ID='672576031209-tv4poa0q6q397aia6trcugcrrq7rbbs3.apps.googleusercontent.com'
+GOOGLE_CLIENT_SECRET='_d9GKch356V2zvoL49ARWDLX'

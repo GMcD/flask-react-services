@@ -1,0 +1,88 @@
+version: '3.7'
+
+x-env: &env
+    env_file:
+        reflask-env.txt
+
+services:
+
+  proxy-ssl:
+    image: ${REGISTRY}/cicd/proxy-ssl:85
+    hostname: proxy-ssl
+    networks:
+      - reflask
+    ports:
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  postgres:
+    image: ${REGISTRY}/reflask/postgres:${TAG_NO}
+    container_name: postgres
+    networks:
+      - reflask
+    volumes:
+      - reflask_data:/var/lib/postgresql/data
+    <<: *env
+    ports:
+      - 5432:5432
+
+  api:
+    image: ${REGISTRY}/reflask/api:${TAG_NO}
+    hostname: api
+    container_name: api
+    hostname: api.local.projectscapa.com
+    <<: *env
+    environment:
+      - VIRTUAL_HOST=api.local.projectscapa.com
+      - VIRTUAL_PORT=${API_PORT}
+      - TAG_NO=${TAG_NO}
+    networks:
+      - reflask
+    volumes:
+      - ${REFLASK_SRC}:/service/reflask
+    ports:
+      - ${API_PORT}:${API_PORT}
+
+  flask:
+    image: ${REGISTRY}/reflask/web:${TAG_NO}
+    hostname: flask
+    container_name: flask
+    hostname: flask.local.projectscapa.com
+    <<: *env
+    environment:
+      - VIRTUAL_HOST=flask.local.projectscapa.com
+      - VIRTUAL_PORT=${BACK_END_PORT}
+      - VIRTUAL_PROTO=https
+      - TAG_NO=${TAG_NO}
+    networks:
+      - reflask
+    volumes:
+      - ${REFLASK_SRC}:/service/reflask
+    ports:
+      - ${BACK_END_PORT}:${BACK_END_PORT}
+
+  react:
+    image: ${REGISTRY}/reflask/react:${TAG_NO}
+    hostname: react
+    container_name: react
+    hostname: react.local.projectscapa.com
+    <<: *env
+    environment:
+      - VIRTUAL_HOST=react.local.projectscapa.com
+      - VIRTUAL_PORT=${FRONT_END_PORT}
+      - TAG_NO=${TAG_NO}
+    networks:
+      - reflask
+    volumes:
+      - ${REFLASK_SRC}:/service/reflask
+    ports:
+      - ${FRONT_END_PORT}:3000
+
+volumes:
+  reflask_data:
+    external: true
+
+networks:
+  reflask:
+    external: true

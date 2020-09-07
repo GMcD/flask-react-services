@@ -1,0 +1,17 @@
+pyOpenSSL
+flask
+oauthlib
+pytest-flask
+python-dotenv
+psycopg2
+requests
+email-validator
+flask-sqlalchemy
+flask-marshmallow
+flask-RESTful
+marshmallow-sqlalchemy
+pylint-flask-sqlalchemy
+flask-migrate
+flask-login
+flask-wtf
+flask-redis

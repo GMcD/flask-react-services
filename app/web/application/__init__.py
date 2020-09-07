@@ -15,7 +15,7 @@ def create_app():
     app.config.from_object('web.config.DevConfig')
 
     from web.blueprints.auth import bp as auth_bp
-    from .errors import bp as errors_bp
+    from web.application.errors import bp as errors_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(errors_bp)
@@ -30,7 +30,7 @@ def create_app():
         # Register Blueprints
 
         # Include our Routes
-        from . import routes
+        from web.application.routes import blog
         db.create_all()
 
         return app

@@ -41,7 +41,6 @@ function card(props, idx){
 function App() {
   const [currentTime, setCurrentTime] = useState(0)
   const [currentPosts, setCurrentPosts] = useState([])
-  // const [currentPosts, setCurrentPosts] = useState([{id:'10',title:'State',content:''},{id:'11',title:'Loading',content:''}])
 
   useEffect(() => {
     fetch('/time')
@@ -50,9 +49,9 @@ function App() {
   }, [])
 
   useEffect(() => {
-    fetch('/posts')
+    fetch('/v2/posts')
         .then(res => res.json())
-        .then(data => setCurrentPosts(data.posts))
+        .then(posts => setCurrentPosts(posts))
   }, [])
 
   return (

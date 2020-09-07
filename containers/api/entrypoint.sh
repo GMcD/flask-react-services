@@ -1,0 +1,5 @@
+#!/bin/sh
+
+FLASK_APP=web.service flask run --no-debugger --host 0.0.0.0 --port 7078 &
+
+tail -f /dev/null
