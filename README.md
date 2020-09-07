@@ -28,5 +28,7 @@ The architectural design has a number of principles which may seem unconventiona
 
  Follow the links below for documentation of the structural components.
 
+   * [App](./app/README.md)
+   * [Containers](./containers/README.md)
+   * [Certificates](./keys/README.md)
    * [Requirements](./requirements/README.md)
-   
