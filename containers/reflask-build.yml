@@ -2,7 +2,8 @@ version: '3.7'
 
 x-env: &env
     env_file:
-        reflask-env.txt
+      - reflask-env.txt
+      - reflask-private.txt
 
 services:
 
@@ -11,6 +12,12 @@ services:
     build:
       context: ..
       dockerfile: ./containers/proxy-ssl/Dockerfile
+
+  redis:
+    image: ${REGISTRY}/reflask/redis:${TAG_NO}
+    build:
+      context: ..
+      dockerfile: ./containers/redis/Dockerfile
 
   postgres:
     image: ${REGISTRY}/reflask/postgres:${TAG_NO}
@@ -47,6 +54,15 @@ services:
         TAG_NO: ${TAG_NO}
       context: ..
       dockerfile: ./containers/web/Dockerfile
+
+  worker:
+    image: ${REGISTRY}/reflask/worker:${TAG_NO}
+    build:
+      args:
+        REGISTRY: ${REGISTRY}
+        TAG_NO: ${TAG_NO}
+      context: ..
+      dockerfile: ./containers/worker/Dockerfile
 
   react:
     image: ${REGISTRY}/reflask/react:${TAG_NO}

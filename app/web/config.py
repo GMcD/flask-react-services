@@ -1,4 +1,6 @@
-"""Flask config."""
+"""
+    Flask configuration
+"""
 from os import environ, path
 from dotenv import load_dotenv
 
@@ -20,6 +22,17 @@ class Config:
     GOOGLE_CLIENT_SECRET = environ.get("GOOGLE_CLIENT_SECRET", None)
     GOOGLE_DISCOVERY_URL = "https://accounts.google.com/.well-known/openid-configuration"
 
+    # Google Mail
+    MAIL_SERVER = 'smtp.googlemail.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = environ.get("MAIL_USERNAME", None)
+    MAIL_PASSWORD = environ.get("MAIL_PASSWORD", None)
+
+    # Redis Broker for Celery
+    CELERY_BROKER_URL = 'redis://redis:6379/0'
+    CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+
 class ProdConfig(Config):
     FLASK_ENV = 'production'
     DEBUG = False
@@ -29,3 +42,4 @@ class DevConfig(Config):
     FLASK_ENV = 'development'
     DEBUG = True
     TESTING = True
+    MAIL_SUPPRESS_SEND = False

@@ -2,7 +2,8 @@ version: '3.7'
 
 x-env: &env
     env_file:
-        reflask-env.txt
+      - reflask-env.txt
+      - reflask-private.txt
 
 services:
 
@@ -16,6 +17,13 @@ services:
       - 443:443
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  redis:
+    image: ${REGISTRY}/reflask/redis:${TAG_NO}
+    hostname: redis
+    container_name: redis
+    networks:
+      - reflask
 
   postgres:
     image: ${REGISTRY}/reflask/postgres:${TAG_NO}
@@ -62,6 +70,16 @@ services:
       - ${REFLASK_SRC}:/service/reflask
     ports:
       - ${BACK_END_PORT}:${BACK_END_PORT}
+
+  worker:
+    image: ${REGISTRY}/reflask/worker:${TAG_NO}
+    hostname: worker
+    container_name: worker
+    <<: *env
+    environment:
+      - TAG_NO=${TAG_NO}
+    networks:
+      - reflask
 
   react:
     image: ${REGISTRY}/reflask/react:${TAG_NO}

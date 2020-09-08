@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>{% block title %} Send an Email later {% endblock %}</h3>
+
+<form method="POST">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="first_name">First Name</label>
+            <input id="first_name" name="first_name" class="form-control" type="text" placeholder="Your first name">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="last_name">Last Name</label>
+            <input id="last_name" name="last_name" class="form-control" type="text" placeholder="Your last name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input id="email" name="email" class="form-control" type="text" aria-describedby="emailHelp" placeholder="Your email address">
+        <small id="emailHelp" class="form-text text-muted">A valid email address is required</small>
+    </div>
+    <div class="form-group">
+        <label for="textarea">Message</label>
+        <textarea id="textarea" name="message" class="form-control" type="text" placeholder="The message"></textarea>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="duration_unit">Duration Units</label>
+            <select id="duration_unit" name="duration_unit" class="form-control" aria-describedby="durationUnitHelp" >
+               <option value="0" selected="selected">Seconds</option>
+               <option value="1">Minutes</option>
+               <option value="2">Hours</option>
+               <option value="3">Days</option>
+            </select>
+            <small id="durationUnitHelp" class="form-text text-muted">Choose duration unit from days, hours, or minutes</small>
+        </div>
+        <div class="form-group col-md-8">
+            <label for="duration">Duration</label>
+            <input id="duration" name="duration" class="form-control" type="text" aria-describedby="durationHelp" placeholder="e.g 2 for two minutes later" value="5"></textarea>
+            <small id="emailHelp" class="form-text text-muted">Time later in duration units to send the email</small>
+        </div>
+    </div>
+
+   <button type="submit" class="btn btn-primary btn-sm" name="action">Submit</button>
+</form>
+{% endblock %}

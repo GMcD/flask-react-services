@@ -11,7 +11,6 @@ FLASK_ENV=development
 POSTGRES_URL=postgres:5432
 POSTGRES_DB=reflask
 POSTGRES_USER=reflask
-POSTGRES_PASSWORD=secret
 
 SQLALCHEMY_ECHO=False
 SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://reflask:secret@postgres:5432/reflask'
@@ -19,6 +18,10 @@ SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://reflask:secret@postgres:5432/refl
 SECRET_KEY='MY KIND OF SECRET KEY'
 
 GOOGLE_CLIENT_ID='672576031209-tv4poa0q6q397aia6trcugcrrq7rbbs3.apps.googleusercontent.com'
-GOOGLE_CLIENT_SECRET='_d9GKch356V2zvoL49ARWDLX'
 
 DANGEROUSLY_DISABLE_HOST_CHECK=true
+
+MAIL_USERNAME='project.scapa@gmail.com'
+
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'

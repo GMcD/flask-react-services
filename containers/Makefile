@@ -2,7 +2,10 @@
 # This makes the subsequent variables available to child shells
 .EXPORT_ALL_VARIABLES:
 
+# Development Environment
 include ./reflask-env.txt
+# Private keys and secrets
+include ./reflask-private.txt
 
 # For mounting Source
 REFLASK_SRC := $(PWD)/../app
