@@ -1,6 +1,11 @@
 import os
-from celery import Celery
 
+# Celery Instance
+from celery import Celery
+celery = Celery(__name__, config_source='web.application.clrycfg')
+from .clry import init_celery
+
+# Flask Stuff
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -13,7 +18,6 @@ db = SQLAlchemy()
 migrate = Migrate()
 mail = Mail()
 login = LoginManager()
-celery = Celery()
 toolbar = DebugToolbarExtension()
 
 def create_app():
@@ -35,14 +39,15 @@ def create_app():
     login.login_view = 'login'
     toolbar.init_app(app)
 
-    # clry = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
-    celery.conf.update(app.config)
-
     with app.app_context():
         # Register Blueprints
+        # celery.conf.update(app.config)
+        # celery.autodiscover_tasks()
+        init_celery(app, celery=celery)
 
         # Include our Routes
         from web.application.routes import blog, email
+        from web.application.tasks import send_mail
         db.create_all()
 
         return app

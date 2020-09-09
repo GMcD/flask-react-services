@@ -80,6 +80,8 @@ services:
       - TAG_NO=${TAG_NO}
     networks:
       - reflask
+    volumes:
+      - ${REFLASK_SRC}:/service/reflask
 
   react:
     image: ${REGISTRY}/reflask/react:${TAG_NO}
