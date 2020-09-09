@@ -19,6 +19,12 @@ services:
       context: ..
       dockerfile: ./containers/redis/Dockerfile
 
+  flower:
+    image: ${REGISTRY}/reflask/flower:${TAG_NO}
+    build:
+      context: ..
+      dockerfile: ./containers/flower/Dockerfile
+
   postgres:
     image: ${REGISTRY}/reflask/postgres:${TAG_NO}
     build:

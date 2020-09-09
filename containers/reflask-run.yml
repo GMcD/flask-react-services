@@ -25,6 +25,17 @@ services:
     networks:
       - reflask
 
+  flower:
+    image: ${REGISTRY}/reflask/flower:${TAG_NO}
+    hostname: flower
+    container_name: flower
+    environment:
+      - VIRTUAL_HOST=flower.local.projectscapa.com
+      - VIRTUAL_PORT=5555
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    networks:
+      - reflask
+
   postgres:
     image: ${REGISTRY}/reflask/postgres:${TAG_NO}
     container_name: postgres
