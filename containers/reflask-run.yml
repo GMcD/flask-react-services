@@ -94,6 +94,34 @@ services:
     volumes:
       - ${REFLASK_SRC}:/service/reflask
 
+  beater:
+    image: ${REGISTRY}/reflask/beater:${TAG_NO}
+    hostname: beater
+    container_name: beater
+    <<: *env
+    environment:
+      - TAG_NO=${TAG_NO}
+    networks:
+      - reflask
+    volumes:
+      - ${REFLASK_SRC}:/service/reflask
+
+  admin:
+    image: ${REGISTRY}/reflask/admin:${TAG_NO}
+    hostname: admin
+    container_name: admin
+    <<: *env
+    environment:
+      - VIRTUAL_HOST=admin.local.projectscapa.com
+      - VIRTUAL_PORT=${ADMIN_PORT}
+      - TAG_NO=${TAG_NO}
+    networks:
+      - reflask
+    volumes:
+      - ${REFLASK_SRC}:/service/reflask
+    ports:
+      - ${ADMIN_PORT}:${ADMIN_PORT}
+
   react:
     image: ${REGISTRY}/reflask/react:${TAG_NO}
     hostname: react

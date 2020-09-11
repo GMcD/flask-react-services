@@ -13,21 +13,20 @@ def email():
 
     elif request.method == 'POST':
         data = request.form
+
         email = data['email']
-        first_name = data['first_name']
-        last_name = data['last_name']
-        message = data['message']
         duration = int(data['duration'])
         duration_unit = data['duration_unit']
 
+        flash(f"Email will be sent to {email} in {duration} {duration_unit}")
+
         if duration_unit == 'minutes':
-            duration *= 60
+            data['duration'] *= 60
         elif duration_unit == 'hours':
-            duration *= 3600
+            data['duration'] *= 3600
         elif duration_unit == 'days':
-            duration *= 86400
+            data['duration'] *= 86400
 
         send_mail.apply_async(args=[data], countdown=duration)
-        flash(f"Email will be sent to {data['email']} in {request.form['duration']} {duration_unit}")
 
         return redirect(url_for('index'))

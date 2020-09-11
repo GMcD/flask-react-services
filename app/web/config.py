@@ -17,6 +17,9 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
 
+    # set optional bootswatch theme
+    FLASK_ADMIN_SWATCH = 'slate'
+
     # Google Configuration
     GOOGLE_CLIENT_ID = environ.get("GOOGLE_CLIENT_ID", None)
     GOOGLE_CLIENT_SECRET = environ.get("GOOGLE_CLIENT_SECRET", None)

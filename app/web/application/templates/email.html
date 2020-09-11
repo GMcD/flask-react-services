@@ -16,8 +16,12 @@
     </div>
     <div class="form-group">
         <label for="email">Email Address</label>
-        <input id="email" name="email" class="form-control" type="text" aria-describedby="emailHelp" placeholder="Your email address">
+        <input id="email" name="email" class="form-control" type="text" aria-describedby="emailHelp" placeholder="Recipient email address">
         <small id="emailHelp" class="form-text text-muted">A valid email address is required</small>
+    </div>
+    <div class="form-group">
+        <label for="email">Subject</label>
+        <input id="subject" name="subject" class="form-control" type="text" placeholder="Message Subject">
     </div>
     <div class="form-group">
         <label for="textarea">Message</label>
@@ -27,10 +31,10 @@
         <div class="form-group col-md-4">
             <label for="duration_unit">Duration Units</label>
             <select id="duration_unit" name="duration_unit" class="form-control" aria-describedby="durationUnitHelp" >
-               <option value="0" selected="selected">Seconds</option>
-               <option value="1">Minutes</option>
-               <option value="2">Hours</option>
-               <option value="3">Days</option>
+               <option value="seconds" selected="selected">Seconds</option>
+               <option value="minutes">Minutes</option>
+               <option value="hours">Hours</option>
+               <option value="days">Days</option>
             </select>
             <small id="durationUnitHelp" class="form-text text-muted">Choose duration unit from days, hours, or minutes</small>
         </div>

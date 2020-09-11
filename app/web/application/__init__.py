@@ -28,6 +28,7 @@ def create_app():
     from web.blueprints.auth import bp as auth_bp
     from web.application.errors import bp as errors_bp
 
+    # Register Blueprints
     app.register_blueprint(auth_bp)
     app.register_blueprint(errors_bp)
 
@@ -40,13 +41,11 @@ def create_app():
     toolbar.init_app(app)
 
     with app.app_context():
-        # Register Blueprints
-        # celery.conf.update(app.config)
-        # celery.autodiscover_tasks()
+        # Initialize Celery with Flask App context
         init_celery(app, celery=celery)
 
         # Include our Routes
-        from web.application.routes import blog, email
+        from web.application.routes import blog, email, progress
         from web.application.tasks import send_mail
         db.create_all()
 

@@ -70,6 +70,24 @@ services:
       context: ..
       dockerfile: ./containers/worker/Dockerfile
 
+  beater:
+    image: ${REGISTRY}/reflask/beater:${TAG_NO}
+    build:
+      args:
+        REGISTRY: ${REGISTRY}
+        TAG_NO: ${TAG_NO}
+      context: ..
+      dockerfile: ./containers/beater/Dockerfile
+
+  admin:
+    image: ${REGISTRY}/reflask/admin:${TAG_NO}
+    build:
+      args:
+        REGISTRY: ${REGISTRY}
+        TAG_NO: ${TAG_NO}
+      context: ..
+      dockerfile: ./containers/admin/Dockerfile
+
   react:
     image: ${REGISTRY}/reflask/react:${TAG_NO}
     build:

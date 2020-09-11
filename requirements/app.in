@@ -18,3 +18,5 @@ flask-migrate
 flask-login
 flask-wtf
 flask-redis
+flask-admin
+watchdog[watchmedo]

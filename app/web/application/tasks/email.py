@@ -13,7 +13,7 @@ def send_mail(data):
     """
     sender = app.config['MAIL_USERNAME']
     suppressed = 'Not sending' if 'MAIL_SUPPRESS_SEND' in app.config and app.config['MAIL_SUPPRESS_SEND'] else 'Sending'
-    msg = Message("Ping!", sender=sender, recipients=[data['email']])
+    msg = Message(data['subject'], sender=sender, recipients=[data['email']])
     msg.body = data['message']
     result = "{} email from '{}'".format(suppressed, sender)
     try:
