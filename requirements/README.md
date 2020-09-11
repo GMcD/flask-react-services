@@ -10,4 +10,4 @@ top level requirements, and any upgrade issues should be dealt with at the same 
 
 > pyup-bot.io is an example of this philosophy
 
-As such, the build process uses `app.in`, and automatically generates `requirements.txt`.
+As such, the build process uses `app.in`, and will automatically generate `requirements.txt`.

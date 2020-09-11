@@ -1,9 +1,7 @@
 from datetime import datetime as dt
-from werkzeug.exceptions import abort
 from werkzeug.urls import url_parse
 
 from flask import request, render_template, make_response, redirect, url_for, flash
-from flask import current_app as app
 from flask_login import current_user, login_user, logout_user, login_required
 
 from web.application.models import db, User

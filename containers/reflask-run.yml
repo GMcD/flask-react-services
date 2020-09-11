@@ -51,7 +51,6 @@ services:
     image: ${REGISTRY}/reflask/api:${TAG_NO}
     hostname: api
     container_name: api
-    hostname: api.local.projectscapa.com
     <<: *env
     environment:
       - VIRTUAL_HOST=api.local.projectscapa.com
@@ -68,7 +67,6 @@ services:
     image: ${REGISTRY}/reflask/web:${TAG_NO}
     hostname: flask
     container_name: flask
-    hostname: flask.local.projectscapa.com
     <<: *env
     environment:
       - VIRTUAL_HOST=flask.local.projectscapa.com
@@ -126,7 +124,6 @@ services:
     image: ${REGISTRY}/reflask/react:${TAG_NO}
     hostname: react
     container_name: react
-    hostname: react.local.projectscapa.com
     <<: *env
     environment:
       - VIRTUAL_HOST=react.local.projectscapa.com

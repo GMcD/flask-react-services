@@ -1,9 +1,8 @@
 """
     Custom 404, 500 and 502 pages. The actual `error` is not reported.
-    Making tbis explicit is pythonic, and makes pylint happy.
+    Making this explicit is pythonic, and makes pylint happy.
 """
 from flask import render_template
-from flask import Blueprint
 
 from web.application import db
 from . import bp
