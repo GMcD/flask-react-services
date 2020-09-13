@@ -46,3 +46,11 @@ class DevConfig(Config):
     DEBUG = True
     TESTING = True
     MAIL_SUPPRESS_SEND = False
+
+class TestConfig(Config):
+    FLASK_ENV = 'development'
+    DEBUG = True
+    TESTING = True
+    MAIL_SUPPRESS_SEND = True
+    PRESERVE_CONTEXT_ON_EXCEPTION = False
+    SQLALCHEMY_DATABASE_URI = "{}_test".format(Config.SQLALCHEMY_DATABASE_URI)

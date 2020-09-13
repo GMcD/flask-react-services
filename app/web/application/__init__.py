@@ -19,7 +19,9 @@ login = LoginManager()
 toolbar = DebugToolbarExtension()
 
 def create_app():
-    """Initialize the core application."""
+    """
+        Initialize web.application.
+    """
     app = Flask(__name__, instance_relative_config=False)
     app.config.from_object('web.config.DevConfig')
 

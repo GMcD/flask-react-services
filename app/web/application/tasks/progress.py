@@ -21,5 +21,5 @@ def long_task(self):
         self.update_state(state='PROGRESS',
                           meta={'current': i, 'total': total,
                                 'status': message})
-        time.sleep(1)
-    return {'current': 100, 'total': 100, 'status': 'Task completed!', 'result': 42}
+        time.sleep(0.5)
+    return {'current': 100, 'total': 100, 'status': 'Task completed!', 'result': 'Task Completed.'}

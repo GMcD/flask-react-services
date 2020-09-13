@@ -1,0 +1,4 @@
+.close:hover,
+.close:focus {
+  cursor: pointer;
+}

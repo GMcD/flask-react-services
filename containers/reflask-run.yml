@@ -18,6 +18,23 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
+  portainer:
+    image: ${REGISTRY}/reflask/portainer:${TAG_NO}
+    hostname: portainer
+    container_name: portainer
+    environment:
+      - VIRTUAL_HOST=portainer.local.projectscapa.com
+      - VIRTUAL_PORT=9000
+    networks:
+      - reflask
+    ports:
+      - 9000:9000
+      - 9001:8000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /dev/shm:/dev/shm
+      - portainer_data:/data
+
   redis:
     image: ${REGISTRY}/reflask/redis:${TAG_NO}
     hostname: redis
@@ -138,6 +155,8 @@ services:
 
 volumes:
   reflask_data:
+    external: true
+  portainer_data:
     external: true
 
 networks:

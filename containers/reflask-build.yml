@@ -13,6 +13,12 @@ services:
       context: ..
       dockerfile: ./containers/proxy-ssl/Dockerfile
 
+  portainer:
+    image: ${REGISTRY}/reflask/portainer:${TAG_NO}
+    build:
+      context: ..
+      dockerfile: ./containers/portainer/Dockerfile
+
   redis:
     image: ${REGISTRY}/reflask/redis:${TAG_NO}
     build:

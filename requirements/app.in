@@ -8,6 +8,7 @@ psycopg2
 requests
 email-validator
 flask-sqlalchemy
+sqlalchemy-utils
 flask-marshmallow
 flask-RESTful
 flask-debugtoolbar

@@ -25,6 +25,7 @@ network:	## Create Network, if not present
 	docker network create --attachable --driver overlay reflask || true
 
 volumes:	## Create Volumes required, if not present
+	docker volume create portainer_data || true
 	docker volume create reflask_data || true
 
 down:		## Stop React Flask Containers
